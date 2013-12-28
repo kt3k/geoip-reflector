@@ -14,7 +14,7 @@ app.use(logfmt.requestLogger());
 
 app.get('/', function(req, res) {
 
-    var ip = req.connection.remoteAddress;
+    var ip = req.headers['X-Forwarded-For'];
 
     var geo = geoip.lookup(ip);
 
