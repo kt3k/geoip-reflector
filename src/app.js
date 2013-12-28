@@ -1,12 +1,31 @@
 // app.js
-var express = require("express");
-var logfmt = require("logfmt");
+
+var express = require('express');
+var logfmt = require('logfmt');
+var geoip = require('geoip-lite');
+
+
+// create express app object
 var app = express();
 
+
+// set logger
 app.use(logfmt.requestLogger());
 
 app.get('/', function(req, res) {
-      res.send('Hello World!');
+
+    var ip = req.connection.remoteAddress;
+
+    var geo = geoip.lookup(ip);
+
+    var result = {
+        ipAddr: ip,
+        countryCode: geo != null ? geo.country : null
+    };
+
+    res.setHeader('Content-Type', 'application/json');
+
+    res.send(JSON.stringify(result, null, 4));
 });
 
 var port = process.env.PORT || 5000;

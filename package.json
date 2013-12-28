@@ -18,7 +18,8 @@
   "gitHead": "5d4df6f90d271bf4c6cdfa47c36987cde2d9805f",
   "dependencies": {
     "logfmt": "~0.18.1",
-    "express": "~3.4.7"
+    "express": "~3.4.7",
+    "geoip-lite": "~1.1.2"
   },
   "engines": {
     "node": "0.10.x"
