@@ -1,0 +1,5 @@
+---
+version: 0.1.0
+files:
+  README.md: geoip-reflector v%.%.%
+  package.json: '"version": "%.%.%"'
