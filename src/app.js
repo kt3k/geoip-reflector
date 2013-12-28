@@ -9,12 +9,24 @@ var geoip = require('geoip-lite');
 var app = express();
 
 
+var getRemoteAddress = function (req) {
+
+    var forwarded = req.header('x-forwarded-for');
+
+    if (typeof forwarded === 'string') {
+        return forwarded.split(',')[0];
+    }
+
+    return req.connection.remoteAddress;
+};
+
+
 // set logger
 app.use(logfmt.requestLogger());
 
 app.get('/', function(req, res) {
 
-    var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
+    var ip = getRemoteAddress(req);
 
     var geo = geoip.lookup(ip);
 
