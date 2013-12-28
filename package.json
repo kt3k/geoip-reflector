@@ -1,0 +1,23 @@
+{
+  "name": "geoip-reflector",
+  "version": "0.1.0",
+  "description": "geoip reflector",
+  "main": "app.js",
+  "scripts": {
+    "test": "grunt"
+  },
+  "repository": "",
+  "keywords": [
+    "ip",
+    "geoip",
+    "heroku-app"
+  ],
+  "author": "Yoshiya Hinosawa",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "gitHead": "5d4df6f90d271bf4c6cdfa47c36987cde2d9805f",
+  "dependencies": {
+    "logfmt": "~0.18.1",
+    "express": "~3.4.7"
+  }
+}
