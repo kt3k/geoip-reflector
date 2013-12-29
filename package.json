@@ -30,6 +30,9 @@
     "grunt-mocha-test": "~0.8.1",
     "sinon-chai": "~2.4.0",
     "chai": "~1.8.1",
-    "sinon": "~1.7.3"
+    "sinon": "~1.7.3",
+    "blanket": "~1.1.6",
+    "mocha-lcov-reporter": "0.0.1",
+    "coveralls": "~2.6.1"
   }
 }

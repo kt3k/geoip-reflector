@@ -4,4 +4,8 @@ node_js:
 
 before_script:
 # install grunt
-- npm isntall -g grunt-cli
+- npm install -g grunt-cli
+
+after_success:
+- grunt mochaTest:lcov
+- ./node_modules/.bin/coveralls < lcov.dat
