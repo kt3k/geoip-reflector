@@ -9,6 +9,14 @@ module.exports = (g) ->
       options:
         jshintrc: '.jshintrc'
 
-  g.loadNpmTasks 'grunt-contrib-jshint'
+    mochaTest:
 
-  g.registerTask 'default', ['jshint']
+      spec:
+        src: ['spec/**/*.js']
+        options:
+          reporter: 'spec'
+
+  g.loadNpmTasks 'grunt-contrib-jshint'
+  g.loadNpmTasks 'grunt-mocha-test'
+
+  g.registerTask 'default', ['jshint', 'mochaTest']
