@@ -5,7 +5,7 @@ module.exports = (g) ->
 
     jshint:
 
-      all: 'src/**/*.js'
+      all: ['src/**/*.js', 'spec/**/*.js']
       options:
         jshintrc: '.jshintrc'
 
