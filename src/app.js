@@ -10,6 +10,7 @@ var app = express();
 
 
 var getRemoteAddress = function (req) {
+    'use strict';
 
     var forwarded = req.header('x-forwarded-for');
 
@@ -24,7 +25,8 @@ var getRemoteAddress = function (req) {
 // set logger
 app.use(logfmt.requestLogger());
 
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
+    'use strict';
 
     var ip = getRemoteAddress(req);
 
@@ -41,6 +43,8 @@ app.get('/', function(req, res) {
 });
 
 var port = process.env.PORT || 5000;
-app.listen(port, function() {
-      console.log("Listening on " + port);
+app.listen(port, function () {
+    'use strict';
+
+    console.log('Listening on ' + port);
 });
