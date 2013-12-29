@@ -1,6 +1,6 @@
 {
   "name": "geoip-reflector",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "geoip reflector",
   "main": "src/app.js",
   "scripts": {
