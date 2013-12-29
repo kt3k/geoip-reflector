@@ -17,7 +17,7 @@ app.get('/', function (req, res) {
     'use strict';
 
     var geoip = GeoipFactory.createByRequest(req);
-
+    res.setHeader('Content-Type', 'application/json');
     res.send(geoip.toJson());
 });
 
