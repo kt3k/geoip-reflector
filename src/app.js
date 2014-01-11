@@ -13,6 +13,9 @@ var app = express();
 // set logger
 app.use(logfmt.requestLogger());
 
+
+app.use(express.static(__dirname + '/../static'));
+
 app.get('/', function (req, res) {
     'use strict';
 
