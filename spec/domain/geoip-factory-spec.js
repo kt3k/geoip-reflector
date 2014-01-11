@@ -140,7 +140,7 @@ describe('GeoipFactory', function () {
             expect(geoip).to.be.an.instanceof(Geoip);
 
             expect(isIpv4(geoip.toObject().ipAddr)).to.be.true;
-            expect(geoip.toObject().countryCode).not.to.be.null;
+            expect(geoip.toObject().countryCode).not.to.be.an('undefined');
 
         });
 

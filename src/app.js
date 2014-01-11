@@ -1,5 +1,7 @@
 // app.js
 
+'use strict';
+
 var express = require('express');
 var logfmt = require('logfmt');
 
@@ -17,24 +19,26 @@ app.use(logfmt.requestLogger());
 app.use(express.static(__dirname + '/../static'));
 
 app.get('/', function (req, res) {
-    'use strict';
+    res.setHeader('Content-Type', 'application/json');
 
     var geoip = GeoipFactory.createByRequest(req);
-    res.setHeader('Content-Type', 'application/json');
     res.send(geoip.toJson());
 });
 
 app.get('/random', function (req, res) {
-    'use strict';
+    res.setHeader('Content-Type', 'application/json');
 
     var geoip = GeoipFactory.createRandom();
-    res.setHeader('Content-Type', 'application/json');
     res.send(geoip.toJson());
+});
+
+app.get('/*', function (req, res) {
+    res.setHeader('Content-Type', 'application/json');
+
+    res.send(JSON.stringify({error: 'no such endpoint: ' + req.params[0]}));
 });
 
 var port = process.env.PORT || 5000;
 app.listen(port, function () {
-    'use strict';
-
     console.log('Listening on ' + port);
 });
