@@ -36,4 +36,5 @@ module.exports = (g) ->
   g.loadNpmTasks 'grunt-contrib-jshint'
   g.loadNpmTasks 'grunt-mocha-test'
 
-  g.registerTask 'default', ['jshint', 'mochaTest']
+  g.registerTask 'default', ['jshint', 'mochaTest:spec']
+  g.registerTask 'cov', ['jshint', 'mochaTest:html-cov']
