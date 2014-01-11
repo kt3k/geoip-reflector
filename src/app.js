@@ -21,6 +21,14 @@ app.get('/', function (req, res) {
     res.send(geoip.toJson());
 });
 
+app.get('/random', function (req, res) {
+    'use strict';
+
+    var geoip = GeoipFactory.createByRequest(req);
+    res.setHeader('Content-Type', 'application/json');
+    res.send(geoip.toJson());
+});
+
 var port = process.env.PORT || 5000;
 app.listen(port, function () {
     'use strict';

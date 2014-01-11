@@ -13,7 +13,7 @@ describe('GeoipFactory', function () {
 
     it('exists', function () {
 
-        expect(GeoipFactory).not.to.equal(null);
+        expect(GeoipFactory).not.to.be.null;
 
     });
 
@@ -82,7 +82,7 @@ describe('GeoipFactory', function () {
 
             var geoip = GeoipFactory.createByRequest(req);
 
-            expect(geoip).not.to.equal(null);
+            expect(geoip).not.to.be.null;
             expect(geoip).to.be.an.instanceof(Geoip);
 
             expect(geoip.toObject()).to.deep.equal({
@@ -91,6 +91,59 @@ describe('GeoipFactory', function () {
             });
 
         });
+    });
+
+    var RE_IPV4 = /(\d+).(\d+).(\d+).(\d+)/;
+
+    var isIpv4 = function (ip) {
+        var match = RE_IPV4.exec(ip);
+
+        if (match == null) {
+            return false;
+        }
+
+        var a0 = +match[1];
+        var a1 = +match[2];
+        var a2 = +match[3];
+        var a3 = +match[4];
+
+        return 0 <= a0 && a0 <= 255 && 0 <= a1 && a1 <= 255 && 0 <= a2 && a2 <= 255 && 0 <= a3 && a3 <= 255;
+    };
+
+    describe('generateRandomAddress', function () {
+
+
+        it('generates random ip address string', function () {
+            var a = GeoipFactory.generateRandomAddress();
+            var b = GeoipFactory.generateRandomAddress();
+
+            expect(isIpv4(a)).to.be.true;
+            expect(isIpv4(b)).to.be.true;
+
+            // this expectation is 99.99999999999999999457% ok
+            expect(a).not.to.equal(b);
+        });
+    });
+
+    describe('createRandom', function () {
+
+        it('creates Geoip objects by generated random ip address', function () {
+
+            var req = {};
+            req.header = function () {
+                return '210.0.0.0';
+            };
+
+            var geoip = GeoipFactory.createRandom();
+
+            expect(geoip).not.to.be.null;
+            expect(geoip).to.be.an.instanceof(Geoip);
+
+            expect(isIpv4(geoip.toObject().ipAddr)).to.be.true;
+            expect(geoip.toObject().countryCode).not.to.be.null;
+
+        });
+
     });
 
 });
