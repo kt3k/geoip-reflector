@@ -24,7 +24,7 @@ app.get('/', function (req, res) {
 app.get('/random', function (req, res) {
     'use strict';
 
-    var geoip = GeoipFactory.createByRequest(req);
+    var geoip = GeoipFactory.createRandom();
     res.setHeader('Content-Type', 'application/json');
     res.send(geoip.toJson());
 });
