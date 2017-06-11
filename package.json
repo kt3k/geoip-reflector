@@ -28,7 +28,7 @@
     "grunt": "~1.0.1",
     "grunt-contrib-jshint": "~1.1.0",
     "grunt-mocha-test": "~0.13.2",
-    "sinon-chai": "~2.9.0",
+    "sinon-chai": "~2.11.0",
     "chai": "~3.5.0",
     "sinon": "~1.17.7",
     "blanket": "~1.2.3",
