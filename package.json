@@ -17,7 +17,7 @@
   "readmeFilename": "README.md",
   "gitHead": "5d4df6f90d271bf4c6cdfa47c36987cde2d9805f",
   "dependencies": {
-    "express": "~5.0.0-alpha.3",
+    "express": "~5.0.0",
     "geoip-lite": "~1.4.7",
     "logfmt": "~1.4.0"
   },
